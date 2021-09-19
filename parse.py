@@ -1,16 +1,6 @@
 import argparse, os, re, sys
 
-def isAlphabet(string: str):
-    return re.fullmatch(r"[a-zA-Z]+", string)
-
-def isAlphanumeric(string: str):
-    return re.fullmatch(r"\s*\w+\s*", string)
-
-def isFloat(string: str):
-    return re.fullmatch(r"\d+\.\d+", string)
-
-def isNumber(string: str):
-    return re.fullmatch(r"\d+", string)
+from module.helper import isAlphabet, isAlphanumeric, isFloat, isNumber
 
 if __name__ == "__main__":
 

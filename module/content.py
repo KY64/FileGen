@@ -9,12 +9,15 @@ MAX_RANGE = 9999999999
 MIN_LENGTH = 4
 MAX_LENGTH = 40
 
+MAX_WHITESPACE = 10
+MIN_WHITESPACE = 1
+
 def appendWhitespace(string: str):
     try:
         if type(string) != str:
             raise TypeError
 
-        for _ in range(0, randint(1,10)):
+        for _ in range(0, randint(MIN_WHITESPACE, MAX_WHITESPACE)):
             string += " "
         return string
     except TypeError:
@@ -66,8 +69,11 @@ def alphabeticalString(length: int):
 
 def generateContent(maxLength: int):
     try:
+        if not isinstance(maxLength, int):
+            raise TypeError("maxLength should has integer type")
+
         if maxLength < 1:
-            return
+            raise ValueError("Length of string should not less than 1")
 
         string = ""
         while len(string) < maxLength:
@@ -76,6 +82,15 @@ def generateContent(maxLength: int):
             string += f"{content(length)},"
 
         return fitContent(string, maxLength)
+
+    except TypeError as e:
+        print(e)
+        raise
+
+    except ValueError as e:
+        print(e)
+        raise
+
     except Exception as e:
         print(e)
         raise
